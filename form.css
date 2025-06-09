@@ -1,0 +1,50 @@
+form {
+  background: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    color: rgba(6, 66, 94, 0.817);
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+label {
+    color: rgba(85, 6, 94, 0.817);
+    display: block;
+    margin-top: 15px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.btn {
+  margin-top: 20px;
+  width: 100%;
+  padding: 12px;
+  background: #400363;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: #7745a0;
+  color: black;
+}
+
+.error {
+  color: red;
+  font-size: 14px;
+}
