@@ -1,0 +1,98 @@
+body {
+  background-image: url(/img/ncm2.png);
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+form {
+  background: #fff;
+  padding: 30px;
+  margin-top: 30px;
+  margin-left: 25%;
+  border-radius: 8px;
+  width: 48%;
+  box-shadow: 0 8px 20px rgba(172, 26, 245, 0.582);
+}
+
+h2 {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: #007bff;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+label {
+    color: rgba(129, 37, 179, 0.753);
+  display: block;
+  margin-left: 30px;
+  margin-top: 10px;
+  font-weight: bold;
+}
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="file"],
+input[type="Country"],
+select {
+  font-family: 'Courier New', Courier, monospace;
+  width: 40%;
+  padding: 10px;
+  margin-left: 30px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form-group {
+  margin-bottom: 30px;
+}
+
+.radio-group, .checkbox-group {
+  margin-top: 5px;
+}
+
+.radio-group label, .checkbox-group label {
+  font-weight: normal;
+  margin-right: 10px;
+}
+
+input[type="submit"] {
+  background-color: #007bff;
+  color: white;
+  padding: 10px;
+  width: 100%;
+  border: none;
+  border-radius: 4px;
+  margin-top: 15px;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+.error {
+  color: red;
+  font-size: 0.9em;
+  margin-top: 5px;
+}
+.date-dropdown {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+select {
+  padding: 10px 16px;
+  width: 20%;
+  font-size: 14px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  background-color: #fff;
+  cursor: pointer;
+  min-width: 120px;
+}
+select:focus {
+  outline: 2px solid #007B8A;
+  border-color: #007B8A;
+}
