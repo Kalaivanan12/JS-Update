@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign in & up</title>
+    <link rel="icon" type="image/png" href="/logo/6372974_account_avatar_log in_login_register_icon.svg">
+    <link rel="stylesheet" href="/css/sign in&up.css">
+</head>
+<body>
+    <div class="container">
+  <form id="signupForm" onsubmit="return validateSignup()">
+    <h2>Sign Up</h2>
+    <input type="text" id="signupName" placeholder="Full Name">
+    <input type="email" id="signupEmail" placeholder="Email">
+    <input type="password" id="signupPassword" placeholder="Password">
+    <input type="password" id="signupConfirmPassword" placeholder="Confirm Password">
+    <input type="submit" value="Create Account">
+    <div class="toggle-link">
+      Already have an account? <a onclick="showSignIn()">Sign In</a>
+    </div>
+  </form>
+  <form id="signinForm" class="hidden" onsubmit="return validateSignin()">
+    <h2>Sign In</h2>
+    <input type="email" id="signinEmail" placeholder="Email">
+    <input type="password" id="signinPassword" placeholder="Password">
+    <input type="submit" value="Login">
+    <div class="toggle-link">
+      Don't have an account? <a onclick="showSignUp()">Sign Up</a>
+    </div>
+  </form>
+</div>
+
+<script>
+  function showSignIn() {
+    document.getElementById("signupForm").classList.add("hidden");
+    document.getElementById("signinForm").classList.remove("hidden");
+  }
+
+  function showSignUp() {
+    document.getElementById("signinForm").classList.add("hidden");
+    document.getElementById("signupForm").classList.remove("hidden");
+  }
+
+  function validateSignup() {
+    const name = document.getElementById("signupName").value.trim();
+    const email = document.getElementById("signupEmail").value.trim();
+    const password = document.getElementById("signupPassword").value;
+    const confirmPassword = document.getElementById("signupConfirmPassword").value;
+
+    if (name === "" || email === "" || password === "" || confirmPassword === "") {
+      alert("Please fill all fields.");
+      return false;
+    }
+
+    const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+    if (!emailPattern.test(email)) {
+      alert("Please enter a valid email.");
+      return false;
+    }
+
+    if (password.length < 6) {
+      alert("Password must be at least 6 characters.");
+      return false;
+    }
+
+    if (password !== confirmPassword) {
+      alert("Passwords do not match.");
+      return false;
+    }
+
+    alert("Account created successfully!");
+    return true;
+  }
+
+  function validateSignin() {
+    const email = document.getElementById("signinEmail").value.trim();
+    const password = document.getElementById("signinPassword").value;
+
+    if (email === "" || password === "") {
+      alert("Please enter both email and password.");
+      return false;
+    }
+
+    alert("Login successful!");
+    return true;
+  }
+</script>
+</body>
+</html>
