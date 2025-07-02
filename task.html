@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task</title>
+</head>
+<body style="text-align: center;">
+    <h2>Rupees Denomination</h2>
+  <label>Enter Amount:</label>
+  <input type="number" id="amount" placeholder="Enter your amount">
+  <button onclick="calculateNotes()">Calculate</button>
+  <h3>Denominations:</h3>
+  <ul id="result"></ul>
+  <script>
+    function calculateNotes() {
+      const input = document.getElementById("amount").value;
+      let amount = parseInt(input);
+      const denominations = [2000, 500, 200, 100, 50, 20, 10, 5, 2, 1];
+      const resultList = document.getElementById("result");
+      resultList.innerHTML = "";
+      if (isNaN(amount) || amount <= 0) {
+        resultList.innerHTML = "<li>Please enter a valid amount.</li>";
+        return;
+      }
+      denominations.forEach(note => {
+        const count = Math.floor(amount / note);
+        if (count > 0) {
+          const li = document.createElement("li");
+          li.textContent = `₹${note} × ${count}`;
+          resultList.appendChild(li);
+          amount = amount % note;
+        }
+      });
+    }
+  </script>
+
+  
+   <h2>Look-and-Say Sequence</h2>
+  <button onclick="generateSequence()">Generate</button>
+  <p id="output"></p>
+  <script>
+    function lookAndSay(term) {
+      let result = '';
+      let count = 1;
+      for (let i = 1; i <= term.length; i++) {
+        if (term[i] === term[i - 1]) {
+          count++;
+        } else {
+          result += count + term[i - 1];
+          count = 1;
+        }
+      }
+      return result;
+    }
+    function generateSequence() {
+      let current = "1";
+      let output = [current];
+      for (let i = 1; i < 10; i++) {
+        current = lookAndSay(current);
+        output.push(current);
+      }
+      document.getElementById("output").textContent = "Output: " + output.join(", ");
+    }
+  </script>
+</body>
+</html>

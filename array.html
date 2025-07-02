@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arrays</title>
+</head>
+<body style="text-align: center;">
+  <h2>Swap Two Numbers Variable</h2>
+  <p>Before Swap: <span id="before"></span></p>
+  <p>After Swap: <span id="after"></span></p>
+  <script>
+    let a = 10;
+    let b = 20;
+    let c = 10;
+    document.getElementById("before").innerText = "a = " + a + ", b = " + b;
+    a = a + b;
+    b = a - b;
+    a = a - b;
+    document.getElementById("after").innerText = "a = " + a + ", b = " + b;
+  </script>
+
+    <h2>Enter Your DoB</h2>
+  <input type="date" id="dob">
+  <button onclick="validateAge()">Check Age</button>
+  <p id="result"></p>
+  <script>
+    function validateAge() {
+      const dobInput = document.getElementById("dob").value;
+      if (!dobInput) {
+        document.getElementById("result").textContent = "Please enter your date of birth.";
+        return;
+      }
+      const dob = new Date(dobInput);
+      const today = new Date();
+      let age = today.getFullYear() - dob.getFullYear();
+      const m = today.getMonth() - dob.getMonth();
+      if (m < 0 || (m === 0 && today.getDate() < dob.getDate())) {
+        age--; 
+      }
+      if (age >= 18 && age <= 30) {
+        document.getElementById("result").textContent = "Valid age: " + age + " years old.";
+      } else {
+        document.getElementById("result").textContent = "Invalid age: " + age + " years old. Must be between 18 to 30.";
+      }
+    }
+  </script>
+
+  <h2>Select a Date (within next 10 days only)</h2>
+  <input type="date" id="datePicker">
+  <script>
+    const datePicker = document.getElementById("datePicker");
+    const today = new Date();
+    const dd = String(today.getDate()).padStart(2, '0');
+    const mm = String(today.getMonth() + 1).padStart(2, '0'); // January is 0
+    const yyyy = today.getFullYear();
+    const minDate = `${yyyy}-${mm}-${dd}`;
+    const maxDateObj = new Date();
+    maxDateObj.setDate(today.getDate() + 10);
+    const maxDd = String(maxDateObj.getDate()).padStart(2, '0');
+    const maxMm = String(maxDateObj.getMonth() + 1).padStart(2, '0');
+    const maxYyyy = maxDateObj.getFullYear();
+    const maxDate = `${maxYyyy}-${maxMm}-${maxDd}`;
+    datePicker.min = minDate;
+    datePicker.max = maxDate;
+  </script>
+
+   <h2>Current Page URL</h2>
+  <p id="urlOutput"></p>
+  <script>
+    const currentURL = window.location.href;
+    document.getElementById("urlOutput").textContent = currentURL;
+  </script>
+
+  <body>
+  <h2>Auto-Resize Input Field</h2>
+  <input type="text" id="autoInput" oninput="resizeInput(this)" placeholder="Type here...">
+  <script>
+    function resizeInput(input) {
+      const span = document.createElement('span');
+      span.style.visibility = 'hidden';
+      span.style.position = 'fixed';
+      span.style.whiteSpace = 'pre';
+      span.style.font = getComputedStyle(input).font;
+      span.textContent = input.value || input.placeholder;
+      document.body.appendChild(span);
+      input.style.width = (span.offsetWidth + 20) + 'px';
+      document.body.removeChild(span);
+    }
+  </script>
+</body>
+</html>

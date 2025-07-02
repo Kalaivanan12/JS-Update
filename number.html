@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Number</title>
+</head>
+<body style="text-align: center;">
+  <h2>Increase or Decrease Number</h2>
+
+  <input type="number" id="userInput" value="0">
+  <br>
+  <br>
+  <button onclick="decrease()">- Decrease</button>
+  <button onclick="increase()">+ Increase</button>
+  <button onclick="reset()">Reset</button>
+  <p class="output">Current Value: <span id="result">0</span></p>
+  <script>
+    function increase() {
+      let input = document.getElementById("userInput");
+      input.value = parseInt(input.value) + 1;
+      document.getElementById("result").innerText = input.value;
+    }
+    function decrease() {
+      let input = document.getElementById("userInput");
+      input.value = parseInt(input.value) - 1;
+      document.getElementById("result").innerText = input.value;
+    }
+     function reset() {
+    let input = document.getElementById("userInput");
+    input.value = 0;
+    document.getElementById("result").innerText = 0;
+  }
+  </script>
+
+<body>
+    <h2>Trailing Spaces </h2>
+    <p>Original:<span id="original"></span></p>
+    <p>Trimmed:<span id="trimmed"></span></p>
+    <script>
+        let text="   Hello World !!   ";
+        document.getElementById("original").innerText = `"${text}"`;
+        let trimmedText = text.trim();
+        document.getElementById("trimmed").innerText = `"${trimmedText}"`;
+    </script>
+
+<body>
+  <h2>Convert Date to YYYYMMDD</h2>
+  <input type="date" id="dateInput2">
+  <button onclick="convertToYMD()">Convert</button>
+  <p id="output2"></p>
+  <script>
+    function convertToYMD() {
+      const input = document.getElementById("dateInput2").value;
+      if (!input) {
+        document.getElementById("output2").textContent = "Please select a date.";
+        return;
+      }
+      const date = new Date(input);
+      const yyyy = date.getFullYear();
+      const mm = String(date.getMonth() + 1).padStart(2, '0');
+      const dd = String(date.getDate()).padStart(2, '0');
+      const yyyymmdd = Number(yyyy + mm + dd);
+      document.getElementById("output2").textContent = "Date as number: " + yyyymmdd;
+    }
+  </script>
+
+   <h2>Countdown Timer</h2>
+  <label>Enter time (in seconds):</label>
+  <input type="number" id="inputSeconds" value="60">
+  <button onclick="startCountdown()">Start</button>
+  <div id="timer">00:00</div>
+  <script>
+    let countdown;
+    function startCountdown() {
+      clearInterval(countdown);
+      const input = document.getElementById("inputSeconds").value;
+      let timeLeft = parseInt(input);
+      countdown = setInterval(function () {
+        const minutes = Math.floor(timeLeft / 60);
+        const seconds = timeLeft % 60;
+        const formattedTime =
+          String(minutes).padStart(2, '0') + ":" + String(seconds).padStart(2, '0');
+        document.getElementById("timer").textContent = formattedTime;
+        if (timeLeft <= 0) {
+          clearInterval(countdown);
+          document.getElementById("timer").textContent = "Time's Up!";
+        }
+        timeLeft--;
+      }, 1000);
+    }
+  </script>
+
+   <h2>Generate Range of Numbers or Characters</h2>
+  <label>Start:</label>
+  <input type="text" id="start">
+  <label>End:</label>
+  <input type="text" id="end">
+  <button onclick="generateRange()">Generate</button>
+  <p id="output"></p>
+  <script>
+    function generateRange() {
+      const start = document.getElementById("start").value;
+      const end = document.getElementById("end").value;
+      let result = [];
+      if (!isNaN(start) && !isNaN(end)) {
+        const s = Number(start);
+        const e = Number(end);
+        for (let i = s; i <= e; i++) {
+          result.push(i);
+        }
+      }
+      else if (start.length === 1 && end.length === 1) {
+        const s = start.charCodeAt(0);
+        const e = end.charCodeAt(0);
+        if (s <= e) {
+          for (let i = s; i <= e; i++) {
+            result.push(String.fromCharCode(i));
+          }
+        } else {
+          for (let i = s; i >= e; i--) {
+            result.push(String.fromCharCode(i));
+          }
+        }
+      }
+      else {
+        result.push("Invalid input. Use numbers or single letters.");
+      }
+      document.getElementById("output").textContent = result.join(", ");
+    }
+  </script>
+
+   <h2>Select a File to Get Its Extension</h2>
+  <input type="file" id="fileInput">
+  <p id="output"></p>
+  <script>
+    document.getElementById("fileInput").addEventListener("change", function() {
+      const file = this.files[0];
+      if (!file) return;
+      const fileName = file.name;
+      const extension = fileName.split('.').pop();
+      document.getElementById("output").textContent = "Extension: " + extension;
+    });
+  </script>
+
+</body>
+</html>
